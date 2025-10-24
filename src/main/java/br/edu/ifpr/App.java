@@ -9,7 +9,7 @@ import java.util.Scanner;
 import br.edu.ifpr.utils.FileManager;
 
 public class App {
-    private static final Path FILE_PATH = Paths.get("data", "notes.txt");
+    private static Path FILE_PATH;
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
@@ -27,6 +27,9 @@ public class App {
 
             switch (option) {
                 case "1" -> {
+                    System.out.println("Digite o nome do arquivo (com extensão, ex: teste.txt): ");
+                    String nomeDoArquivo = scanner.nextLine();
+                    FILE_PATH = Paths.get("data", nomeDoArquivo);
                     System.out.print("Digite o texto: ");
                     String text = scanner.nextLine();
                     FileManager.write(text + System.lineSeparator(), FILE_PATH);
@@ -48,9 +51,9 @@ public class App {
                 }
                 case "4" -> {
                     System.out.print("Texto a ser substituído: ");
-                    String oldText = scanner.nextLine();
+                    String oldText = scanner.nextLine().toLowerCase();
                     System.out.print("Novo texto: ");
-                    String newText = scanner.nextLine();
+                    String newText = scanner.nextLine().toLowerCase();
                     FileManager.replaceText(FILE_PATH, oldText, newText);
                     System.out.println("Texto substituído com sucesso!");
                 }
