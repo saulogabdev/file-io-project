@@ -20,6 +20,6 @@ class FabricaSMS extends FabricaNotificacao {
 public class Main {
     public static void main(String[] args) {
         FabricaNotificacao fabrica = new FabricaEmail(); // Pode trocar para FabricaSMS
-        fabrica.criarNotificacao("Bem-vindo!");
+        Notificacao notificacao = fabrica.criarNotificacao("Bem-vindo!");
     }
 }
